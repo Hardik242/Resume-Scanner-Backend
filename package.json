@@ -1,12 +1,11 @@
 {
-    "name": "my-app",
-    "version": "0.1.0",
+    "name": "resume-scanner-backend",
+    "version": "1.0.0",
     "private": true,
+    "description": "Backend service for Resume Scanner application with LLM integration.",
+    "main": "server.js",
     "scripts": {
-        "dev": "node server.js",
-        "build": "next build",
-        "start": "NODE_ENV=production node server.js",
-        "lint": "next lint"
+        "start": "node server.js"
     },
     "dependencies": {
         "@google/generative-ai": "^0.24.1",
@@ -17,11 +16,7 @@
         "socket.io": "^4.8.1",
         "uuid": "^11.1.0"
     },
-    "devDependencies": {
-        "@eslint/eslintrc": "^3",
-        "@tailwindcss/postcss": "^4",
-        "eslint": "^9",
-        "eslint-config-next": "15.3.3",
-        "tailwindcss": "^4"
+    "engines": {
+        "node": ">=18.x"
     }
 }

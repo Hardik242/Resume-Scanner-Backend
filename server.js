@@ -12,8 +12,8 @@ const {v4: uuidv4} = require("uuid"); // Used for unique IDs
 // --- Configuration ---
 // Listen on all available network interfaces
 // Most hosting providers will set the PORT environment variable.
-// const hostname = "0.0.0.0";
-const hostname = "localhost";
+const hostname = "0.0.0.0";
+// const hostname = "localhost";
 const port = process.env.PORT || 5000;
 
 // Initialize Gemini API
