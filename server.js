@@ -196,9 +196,10 @@ const io = new Server(httpServer, {
         // e.g., origin: "https://your-frontend-app.vercel.app",
         // origin: "*",
         origin: [
-            "https://resume-scanner-frontend-hardik242s-projects.vercel.app/",
-            "https://resume-scanner-frontend-kappa.vercel.app/",
-            "https://resume-scanner-frontend-git-main-hardik242s-projects.vercel.app/",
+            "https://resume-scanner-frontend-hardik242s-projects.vercel.app",
+            "https://resume-scanner-frontend-kappa.vercel.app",
+            "https://resume-scanner-frontend-git-main-hardik242s-projects.vercel.app",
+            "http://13.234.66.14:5000",
         ],
         methods: ["GET", "POST"],
     },
