@@ -1,19 +1,18 @@
-// server.js (for the Backend Repository)
-require("dotenv").config(); // Keep this for environment variables
+require("dotenv").config();
 
 const {createServer} = require("http");
 const {Server} = require("socket.io");
-const Papa = require("papaparse"); // Used for parsing CSV data
+const Papa = require("papaparse");
 const {GoogleGenerativeAI} = require("@google/generative-ai");
 const pdfParse = require("pdf-parse");
 const {default: fetch} = require("node-fetch");
-const {v4: uuidv4} = require("uuid"); // Used for unique IDs
 
-// --- Configuration ---
-// Listen on all available network interfaces
-// Most hosting providers will set the PORT environment variable.
+//Use this when deployed
 const hostname = "0.0.0.0";
+
+//Use this when using localhost
 // const hostname = "localhost";
+
 const port = process.env.PORT || 5000;
 
 // Initialize Gemini API
@@ -27,7 +26,7 @@ if (!geminiApiKey) {
 }
 const genAI = geminiApiKey ? new GoogleGenerativeAI(geminiApiKey) : null;
 const model = genAI
-    ? genAI.getGenerativeModel({model: "gemini-2.5-flash"}) // Using text-only model as image fallback is removed
+    ? genAI.getGenerativeModel({model: "gemini-2.5-flash"})
     : null;
 
 // --- Helper Functions (Your "Backend Functions") ---
@@ -183,10 +182,7 @@ async function compareWithLLM(resumeContent, jobDescription) {
 }
 
 // Create a standard Node.js HTTP server.
-// This server will primarily host your Socket.IO connection.
 const httpServer = createServer((req, res) => {
-    // For a pure backend, you might just return a simple message for HTTP requests
-    // to the root URL, as the main interaction will be via WebSockets.
     res.writeHead(200, {"Content-Type": "text/plain"});
     res.end(
         "Backend server is running. WebSocket (Socket.IO) endpoint available."
@@ -198,7 +194,12 @@ const io = new Server(httpServer, {
     cors: {
         // IMPORTANT: In production, change this from "*" to your Vercel frontend URL!
         // e.g., origin: "https://your-frontend-app.vercel.app",
-        origin: "*",
+        // origin: "*",
+        origin: [
+            "https://resume-scanner-frontend-hardik242s-projects.vercel.app/",
+            "https://resume-scanner-frontend-kappa.vercel.app/",
+            "https://resume-scanner-frontend-git-main-hardik242s-projects.vercel.app/",
+        ],
         methods: ["GET", "POST"],
     },
     maxHttpBufferSize: 1e8,
