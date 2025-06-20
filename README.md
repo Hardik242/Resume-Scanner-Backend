@@ -51,6 +51,7 @@ You can access the deployed versions of this application:
 
 The project is logically separated into two main parts: `Frontend` (Next.js application) and `Backend` (Node.js/Socket.IO server).
 
+```
 .
 ├── Backend/
 │ ├── node_modules/
@@ -88,6 +89,7 @@ The project is logically separated into two main parts: `Frontend` (Next.js appl
 └── screenshots/ # Folder containing project screenshots
 ├── backend_structure.png
 └── frontend_structure.png
+```
 
 **Screenshot of Project Structure:**
 
